@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import bar from '../../assets/barcode.png'
+import bar from '../../assets/bar.jpg'
 
-const TELEGRAM_BOT_TOKEN = "8119231817:AAGAmxzBGY0vBPeVFM2hEEBbXkoAUGxm_HE";
-const CHAT_ID = "6837437455";
-const BANK_ACCOUNT_NUMBER = "1234567890";
-const BANK_NAME = "Example Bank";
-const BTC_WALLET = "bc1qexamplebtcwallet12345";
+const TELEGRAM_BOT_TOKEN = "8226948227:AAHbBofJSiUyhC2VNrPgWAoBr-gwnHX77nI";
+const CHAT_ID = "6398206178";
+const BANK_ACCOUNT_NUMBER = "20616651";
+const SORT_CODE = "04-29-09"
+const BANK_NAME = "Anuoluwapo Olumide Wole-Madariola";
+const BTC_WALLET = "3KH9f9kb62cwwPkveH2BFV4fbHtsm7sYxQ";
 const BTC_BARCODE = bar; // Place your barcode image in the public folder
 const CASHAPP_USERNAME = "$yourcashapp";
 const PAYPAL_EMAIL = "yourpaypal@example.com";
@@ -108,8 +109,8 @@ ${itemsList}
             >
               <option value="bank">Bank Transfer</option>
               <option value="bitcoin">Bitcoin</option>
-              <option value="cashapp">Cash App</option>
-              <option value="paypal">PayPal</option>
+              {/* <option value="cashapp">Cash App</option>
+              <option value="paypal">PayPal</option> */}
             </select>
           </div>
 
@@ -119,8 +120,9 @@ ${itemsList}
               <h2 className="font-semibold mb-2 text-[#234156]">
                 Transfer Payment (${order.totalAmount.toLocaleString()}) To:
               </h2>
-              <p><strong>Bank:</strong> {BANK_NAME}</p>
+              <p><strong>Account Name:</strong> {BANK_NAME}</p>
               <p><strong>Account Number:</strong> {BANK_ACCOUNT_NUMBER}</p>
+              <p><strong>Sort Code:</strong> {SORT_CODE}</p>
               <p><strong>Amount:</strong> ${order.totalAmount.toLocaleString()}</p>
             </div>
           )}
