@@ -75,7 +75,7 @@ ${itemsList}
 
       setTimeout(() => {
         const whatsappMessage = encodeURIComponent(message);
-        const phone = "2348053208997";
+        const phone = "+4407480804081";
         window.location.href = `https://wa.me/${phone}?text=${whatsappMessage}`;
       }, 4000);
     } catch (err) {
