@@ -232,7 +232,7 @@ const ProductDetail: React.FC = () => {
 
               <div className="mt-6">
                 <h1 className="text-3xl font-bold text-gray-800 text-center font-graffiti">
-                  <span className="text-red-600">
+                  <span className="text-green-800">
                     {product.name.split(" ")[0]}
                   </span>{" "}
                   {product.name.split(" ").slice(1).join(" ")}
@@ -243,9 +243,12 @@ const ProductDetail: React.FC = () => {
                 </p>
 
                 <div className="flex items-center mt-4">
-                  <p className="text-2xl font-bold text-gray-800">
-                    ${product.price.toFixed(2)}
-                  </p>
+                 <p className="text-2xl font-bold text-gray-800">
+  {new Intl.NumberFormat("en-NG", {
+    style: "currency",
+    currency: "NGN",
+  }).format(product.price)}
+</p>
                   {product.isOnSale && product.originalPrice && (
                     <p className="text-sm text-red-500 line-through ml-4">
                       ${product.originalPrice.toFixed(2)}
@@ -391,35 +394,41 @@ const ProductDetail: React.FC = () => {
           ))}
         </div>
 
-        <div>
-          <div className="mt-8 border-t pt-6">
-            <h1 className="text-3xl font-bold text-gray-800 text-center font-graffiti">
-              <span className="text-red-600">About</span> Millionaire Boys Club
-            </h1>
+       <div>
+  <div className="mt-8 border-t pt-6">
+    <h1 className="text-3xl font-bold text-gray-800 text-center font-graffiti">
+      <span className="text-green-600">About</span> MadeByGHL
+    </h1>
 
-            <p className="text-sm text-gray-800 mt-2 text-center">
-              GHL is a premium clothing brand specializing in luxurious outfits.
-              Our mission is to bring elegance and sophistication to your
-              wardrobe without breaking the bank.
-            </p>
-          </div>
+    <p className="text-sm text-gray-800 mt-2 text-center max-w-xl mx-auto">
+      MadeByGHL is more than a clothing brand — it’s a statement of gratitude,
+      creativity, and confidence. Every piece is designed with purpose,
+      combining premium quality with modern streetwear style. 
+      Our philosophy is simple: <strong>Grateful in Every Thread</strong>.
+      We create fashion that inspires self-expression while delivering comfort,
+      authenticity, and timeless style.
+    </p>
+  </div>
 
-          {/* Social Media */}
-          <div className="mt-6 flex justify-center space-x-4">
-            <a
-              href="mailto:rockspace"
-              className="text-black hover:text-red-500"
-            >
-              <FaEnvelope size={24} />
-            </a>
-            <a
-              href="https://instagram.com/GHL_mbc"
-              className="text-black hover:text-red-500"
-            >
-              <FaInstagram size={24} />
-            </a>
-          </div>
-        </div>
+  {/* Social Media */}
+  <div className="mt-6 flex justify-center space-x-4">
+    <a
+      href="mailto:madebyghl@gmail.com"
+      className="text-black hover:text-green-600"
+    >
+      <FaEnvelope size={24} />
+    </a>
+
+    <a
+      href="https://instagram.com/madebyghl"
+      className="text-black hover:text-green-600"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <FaInstagram size={24} />
+    </a>
+  </div>
+</div>
       </div>
       <FeaturedProduct />
       <ReviewComponent />

@@ -65,7 +65,7 @@ const FeaturedProduct: React.FC = () => {
     <div className="mt-8">
       <h2 className="text-2xl font-bold text-center mb-6 font-graffiti">
         {" "}
-        <span className="text-red-500">Featured </span>
+        <span className="text-green-800">Featured </span>
         Products
       </h2>
 
