@@ -1,4 +1,4 @@
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -34,7 +34,7 @@ const Footer = () => {
         </div>
 
         {/* Column 2: Shop Here */}
-        <div>
+        {/* <div>
           <h3 className="uppercase font-semibold text-sm mb-4">Shop Here</h3>
           <ul className="space-y-2 text-sm">
             <li>All Items</li>
@@ -43,24 +43,15 @@ const Footer = () => {
             <li>Accessories</li>
             <li>Collections</li>
           </ul>
-        </div>
+        </div> */}
 
         {/* Column 3: Quick Links */}
-        <div>
-          <h3 className="uppercase font-semibold text-sm mb-4">Quick Links</h3>
-          <ul className="space-y-2 text-sm">
-            <li>About Us</li>
-            <li>Our Walk-In Store</li>
-            <li>FAQs</li>
-            <li>Policies</li>
-            <li>Your Account</li>
-          </ul>
-        </div>
+    
 
         {/* Column 4: Contact */}
         <div>
           <h3 className="uppercase font-semibold text-sm mb-4">Contact</h3>
-          <p className="text-sm mb-2 leading-relaxed">LAGOS NIGERIA </p>
+          <p className="text-sm mb-2 leading-relaxed"> South Africa & Nigeria</p>
           <p className="text-sm mb-2">Operating Hours:</p>
           <p className="text-sm mb-1">Mon – Sat: 10am – 10pm</p>
           <p className="text-sm mb-2">Sun: 12pm – 10pm</p>
@@ -79,6 +70,13 @@ const Footer = () => {
               rel="noopener noreferrer"
             >
               <FaWhatsapp />
+            </a>
+            <a
+              href="https://www.tiktok.com/@made.by.ghl?_r=1&_t=ZS-94753j6TPAj"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaTiktok />
             </a>
           </div>
         </div>
