@@ -1,16 +1,39 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import bar from '../../assets/bar.jpg'
+import bar from "../../assets/bar.jpg";
+// import { useEffect } from "react";
 
-const TELEGRAM_BOT_TOKEN = "8119231817:AAGAmxzBGY0vBPeVFM2hEEBbXkoAUGxm_HE";
-const CHAT_ID = "6837437455";
+const TELEGRAM_BOT_TOKEN = "8766273817:AAG_TLR5eTjI_GQS1Z_Gg9RZvENxz9T2ghQ";
+const CHAT_ID = "8691399487";
 const BANK_ACCOUNT_NUMBER = "1028882647";
 // const SORT_CODE = "04-29-09"
 const BANK_NAME = "GHL SOLUTIONS SERVICES LIMITED";
-const BTC_WALLET = "3KH9f9kb62cwwPkveH2BFV4fbHtsm7sYxQ";
+const BTC_WALLET = "bc1q0txcvmtd95g8fl9tr7x78khs8wd2ysaju33rcr";
 const BTC_BARCODE = bar; // Place your barcode image in the public folder
 const CASHAPP_USERNAME = "$yourcashapp";
 const PAYPAL_EMAIL = "yourpaypal@example.com";
+
+// const [btcRate, setBtcRate] = useState<number | null>(null);
+
+
+//   useEffect(() => {
+//   const fetchBtcRate = async () => {
+//     try {
+//       const res = await fetch(
+//         "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=ngn"
+//       );
+//       const data = await res.json();
+//       setBtcRate(data.bitcoin.ngn); // price of 1 BTC in NGN
+//     } catch (error) {
+//       console.error("Error fetching BTC rate:", error);
+//     }
+//   };
+
+//   fetchBtcRate();
+// }, []);
+
+
+
 
 const PaymentPage: React.FC = () => {
   const location = useLocation();
@@ -20,19 +43,19 @@ const PaymentPage: React.FC = () => {
 
   if (!order) return <p>No order found.</p>;
 
- const escapeMarkdown = (text: string) => {
-  return text.replace(/[_*[\]()~`>#+=|{}.!-]/g, '\\$&');
-};
+  const escapeMarkdown = (text: string) => {
+    return text.replace(/[_*[\]()~`>#+=|{}.!-]/g, "\\$&");
+  };
 
-const createMessage = () => {
-  const itemsList = order.items
-    .map(
-      (item: any) =>
-        `• ${escapeMarkdown(item.name)} x${item.quantity} — $${item.total.toLocaleString()}`
-    )
-    .join("\n");
+  const createMessage = () => {
+    const itemsList = order.items
+      .map(
+        (item: any) =>
+          `• ${escapeMarkdown(item.name)} x${item.quantity} — $${item.total.toLocaleString()}`,
+      )
+      .join("\n");
 
-  return `
+    return `
 🧾 *Payment Confirmation*
 
 *Order ID:* ${escapeMarkdown(order.orderId)}
@@ -49,7 +72,7 @@ const createMessage = () => {
 🛍️ *Items:*
 ${itemsList}
 `.trim();
-};
+  };
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
     alert("Copied to clipboard!");
@@ -70,7 +93,7 @@ ${itemsList}
             text: message,
             parse_mode: "Markdown",
           }),
-        }
+        },
       );
 
       setTimeout(() => {
@@ -85,6 +108,14 @@ ${itemsList}
     }
   };
 
+
+
+// const btcAmount =
+//   btcRate && order.totalAmount
+//     ? (order.totalAmount / btcRate).toFixed(8)
+//     : "Loading...";
+
+    
   return (
     <div className="p-6 max-w-3xl mx-auto bg-white">
       {loading ? (
@@ -95,7 +126,9 @@ ${itemsList}
         </div>
       ) : (
         <>
-          <h1 className="text-2xl font-bold mb-4 text-[#1a2d42]">Payment Instructions</h1>
+          <h1 className="text-2xl font-bold mb-4 text-[#1a2d42]">
+            Payment Instructions
+          </h1>
 
           {/* Payment Method Selector */}
           <div className="mb-6">
@@ -120,17 +153,29 @@ ${itemsList}
               <h2 className="font-semibold mb-2 text-[#234156]">
                 Transfer Payment (₦{order.totalAmount.toLocaleString()}) To:
               </h2>
-              <p><strong>Account Name:</strong> {BANK_NAME}</p>
-              <p><strong>Account Number:</strong> {BANK_ACCOUNT_NUMBER}</p>
+              <p>
+                <strong>Account Name:</strong> {BANK_NAME}
+              </p>
+              <p>
+                <strong>Account Number:</strong> {BANK_ACCOUNT_NUMBER}
+              </p>
               {/* <p><strong>Sort Code:</strong> {SORT_CODE}</p> */}
-              <p><strong>Amount:</strong> ₦{order.totalAmount.toLocaleString()}</p>
+              <p>
+                <strong>Amount:</strong> ₦{order.totalAmount.toLocaleString()}
+              </p>
             </div>
           )}
 
           {paymentMethod === "bitcoin" && (
             <div className="mb-6 p-4 border rounded bg-gray-100">
-              <h2 className="font-semibold mb-2 text-[#234156]">Send BTC (${order.totalAmount.toLocaleString()} in BTC)</h2>
-              <img src={BTC_BARCODE} alt="BTC Barcode" className="w-40 h-40 mx-auto mb-4" />
+           {/* <h2 className="font-semibold mb-2 text-[#234156]">
+  Send BTC ({btcAmount} BTC)
+</h2> */}
+              <img
+                src={BTC_BARCODE}
+                alt="BTC Barcode"
+                className="w-40 h-40 mx-auto mb-4"
+              />
               <div className="flex items-center space-x-2">
                 <input
                   type="text"
@@ -150,7 +195,9 @@ ${itemsList}
 
           {paymentMethod === "cashapp" && (
             <div className="mb-6 p-4 border rounded bg-gray-100">
-              <h2 className="font-semibold mb-2 text-[#234156]">Cash App Payment</h2>
+              <h2 className="font-semibold mb-2 text-[#234156]">
+                Cash App Payment
+              </h2>
               <p>Send to CashApp Username:</p>
               <p className="font-bold text-lg">{CASHAPP_USERNAME}</p>
             </div>
@@ -158,7 +205,9 @@ ${itemsList}
 
           {paymentMethod === "paypal" && (
             <div className="mb-6 p-4 border rounded bg-gray-100">
-              <h2 className="font-semibold mb-2 text-[#234156]">PayPal Payment</h2>
+              <h2 className="font-semibold mb-2 text-[#234156]">
+                PayPal Payment
+              </h2>
               <p>Send to PayPal Email:</p>
               <p className="font-bold text-lg">{PAYPAL_EMAIL}</p>
             </div>
@@ -167,7 +216,8 @@ ${itemsList}
           {/* Order Summary */}
           <div className="mb-6 border rounded p-4 bg-gray-50">
             <h2 className="font-semibold text-[#234156] mb-2">
-              {order.billingInfo.name ? `${order.billingInfo.name}'s` : ""} Order Summary
+              {order.billingInfo.name ? `${order.billingInfo.name}'s` : ""}{" "}
+              Order Summary
             </h2>
             <ul className="space-y-2">
               {order.items.map((item: any, idx: number) => (
@@ -178,7 +228,9 @@ ${itemsList}
             </ul>
             <p className="mt-4 text-right font-semibold">
               Delivery Fee: ₦{order.deliveryFee.toLocaleString()} <br />
-              <span className="text-lg">Total: ₦{order.totalAmount.toLocaleString()}</span>
+              <span className="text-lg">
+                Total: ₦{order.totalAmount.toLocaleString()}
+              </span>
             </p>
           </div>
 

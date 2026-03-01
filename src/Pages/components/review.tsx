@@ -3,7 +3,15 @@ import axios from "axios"; // To handle Telegram API calls
 import { FaUser, FaPhoneAlt, FaStar, FaTrashAlt } from "react-icons/fa"; // For icon usage
 
 const ReviewComponent: React.FC = () => {
-  const [reviews, setReviews] = useState<{ name: string; number: string; avatar: string; comment: string; rating: number }[]>([]);
+  const [reviews, setReviews] = useState<
+    {
+      name: string;
+      number: string;
+      avatar: string;
+      comment: string;
+      rating: number;
+    }[]
+  >([]);
   const [name, setName] = useState<string>("");
   const [number, setNumber] = useState<string>("");
   const [avatar, setAvatar] = useState<string>("avatar1");
@@ -24,16 +32,22 @@ const ReviewComponent: React.FC = () => {
   }, [reviews]);
 
   // Send review details to Telegram bot
-  const sendReviewToTelegram = async (name: string, number: string, avatar: string, comment: string, rating: number) => {
+  const sendReviewToTelegram = async (
+    name: string,
+    number: string,
+    avatar: string,
+    comment: string,
+    rating: number,
+  ) => {
     const message = `New Review:
     Name: ${name}
     Number: ${number}
     Avatar: ${avatar}
     Review: ${comment}
-    Rating: ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}`;
+    Rating: ${"★".repeat(rating)}${"☆".repeat(5 - rating)}`;
 
-    const telegramApiUrl = `https://api.telegram.org/bot8119231817:AAGAmxzBGY0vBPeVFM2hEEBbXkoAUGxm_HE/sendMessage`;
-    const chatId = '6837437455';
+    const telegramApiUrl = `https://api.telegram.org/bot8766273817:AAG_TLR5eTjI_GQS1Z_Gg9RZvENxz9T2ghQ/sendMessage`;
+    const chatId = "8691399487";
 
     try {
       await axios.post(telegramApiUrl, {
@@ -67,11 +81,10 @@ const ReviewComponent: React.FC = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-8 bg-white rounded-lg shadow-xl mt-8">
-      <h1 className="text-3xl font-riss text-center text-gray-800 mb-6 ">Leave a Review</h1>
-
+      <h1 className="text-3xl font-riss text-center text-gray-800 mb-6 ">
+        Leave a Review
+      </h1>
       <hr /> <hr className="mb-3 font-bold" />
-
-
       {/* Review Form */}
       <form onSubmit={handleAddReview} className="space-y-6">
         <div className=" space-x-6">
@@ -85,7 +98,9 @@ const ReviewComponent: React.FC = () => {
                   src={`https://api.dicebear.com/6.x/thumbs/png?seed=${avatarOption}`}
                   alt={avatarOption}
                   className={`w-14 h-14 rounded-full cursor-pointer border-2 transition-all ${
-                    avatar === avatarOption ? "border-blue-500" : "border-transparent"
+                    avatar === avatarOption
+                      ? "border-blue-500"
+                      : "border-transparent"
                   }`}
                   onClick={() => setAvatar(avatarOption)}
                 />
@@ -150,33 +165,42 @@ const ReviewComponent: React.FC = () => {
           </button>
         </div>
       </form>
-
       {/* Display Reviews */}
       <div className="mt-12 ">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6 font-riss text-center">Reviews</h2>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-6 font-riss text-center">
+          Reviews
+        </h2>
         {reviews.length > 0 ? (
           reviews.map((review, index) => (
-            <div key={index} className="flex items-start gap-4 p-4 mb-6 bg-[#000] rounded-lg shadow-sm">
+            <div
+              key={index}
+              className="flex items-start gap-4 p-4 mb-6 bg-[#000] rounded-lg shadow-sm"
+            >
               <img
                 src={`https://api.dicebear.com/6.x/thumbs/png?seed=${review.avatar}`}
                 alt={review.avatar}
                 className="w-16 h-16 rounded-full"
               />
               <div className="flex-1">
-                <p className="text-[#fff] font-semibold font-sans">{review.name} (Rating: {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)})</p>
+                <p className="text-[#fff] font-semibold font-sans">
+                  {review.name} (Rating: {"★".repeat(review.rating)}
+                  {"☆".repeat(5 - review.rating)})
+                </p>
                 <p className="text-gray-400">{review.comment}</p>
                 {/* Delete Button */}
                 <button
                   onClick={() => handleDeleteReview(index)}
                   className="text-red-500 hover:text-red-700 mt-2"
                 >
-                  <FaTrashAlt /> 
+                  <FaTrashAlt />
                 </button>
               </div>
             </div>
           ))
         ) : (
-          <p className="text-gray-600">No reviews yet. Be the first to add one!</p>
+          <p className="text-gray-600">
+            No reviews yet. Be the first to add one!
+          </p>
         )}
       </div>
     </div>
