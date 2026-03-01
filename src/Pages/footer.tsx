@@ -27,7 +27,7 @@ const Footer = () => {
               Subscribe to our newsletter
             </button>
             <p className="text-[11px] mt-2 text-black">
-              *By signing up, you agree to receive emails about Rocspace and our{" "}
+              *By signing up, you agree to receive emails about GHL and our{" "}
               <span className="underline">other terms</span>.
             </p>
           </form>
@@ -60,22 +60,21 @@ const Footer = () => {
         {/* Column 4: Contact */}
         <div>
           <h3 className="uppercase font-semibold text-sm mb-4">Contact</h3>
-          <p className="text-sm mb-2 leading-relaxed">
-           LAGOS NIGERIA     </p>
+          <p className="text-sm mb-2 leading-relaxed">LAGOS NIGERIA </p>
           <p className="text-sm mb-2">Operating Hours:</p>
           <p className="text-sm mb-1">Mon – Sat: 10am – 10pm</p>
           <p className="text-sm mb-2">Sun: 12pm – 10pm</p>
-          <p className="text-sm mb-4">+234 0000000000</p>
+          <p className="text-sm mb-4">+2348076715472</p>
           <div className="flex gap-4 text-lg">
             <a
-              href="https://instagram.com/rocspace"
+              href="https://instagram.com/madebyghl"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaInstagram />
             </a>
             <a
-              href="https://wa.me/2349131058119"
+              href="https://wa.me/2348076715472"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -87,7 +86,7 @@ const Footer = () => {
 
       {/* Bottom bar */}
       <div className="border-t border-black text-center py-4 text-xs">
-        &copy; {new Date().getFullYear()} Rocspace Clothing. All Rights Reserved
+        &copy; {new Date().getFullYear()} GHL Clothing. All Rights Reserved
       </div>
     </footer>
   );

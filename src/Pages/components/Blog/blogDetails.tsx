@@ -12,7 +12,7 @@ import img from "../../../assets/new.jpg";
 import fav from "../../../assets/logo.jpg";
 import FeaturedBlog from "./featuredBlog";
 
-const JSON_BIN_ID = "6864f1c28a456b7966b9f43b";
+const JSON_BIN_ID = "69a476ffae596e708f5586b6";
 const API_KEY = "$2a$10$yti1izYQ7PKY9IhwxrQiuuIk8TZDdxM6nzYFnduMOvJtKIdyRhBB.";
 const BASE_URL = `https://api.jsonbin.io/v3/b/${JSON_BIN_ID}`;
 
@@ -53,27 +53,25 @@ const BlogDetail: React.FC = () => {
 
   return (
     <>
-    
       <div className="text-sm font-semibold ml-4 mt-8 font-graffiti">
         <Link to="/">Home</Link> | <Link to="/blog">Blog</Link> | {blog.title}
       </div>
       <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg">
-       <h1 className="font-graffiti font-bold text-2xl text-center mb-4 pb-4  border-b-4 border-red-500 ">
-  <span className="text-red-500">{blog.title.split(" ")[0]}</span>{" "}
-  {blog.title.split(" ").slice(1).join(" ")}
-</h1>
+        <h1 className="font-graffiti font-bold text-2xl text-center mb-4 pb-4  border-b-4 border-green-800 ">
+          <span className="text-green-800">{blog.title.split(" ")[0]}</span>{" "}
+          {blog.title.split(" ").slice(1).join(" ")}
+        </h1>
 
         <div className="flex justify-between mb-6">
-        <div className="flex items-center mt-2 text-xs">
-  <p className="font-bold">Author:</p>
-  <img
-    src={fav}
-    className="h-4 w-4 ml-2 mr-2 rounded-full border-2 border-black object-cover"
-    alt="Author"
-  />
-  <span className="font-bold">{blog.author || "Unknown"}</span>
-</div>
-
+          <div className="flex items-center mt-2 text-xs">
+            <p className="font-bold">Author:</p>
+            <img
+              src={fav}
+              className="h-4 w-4 ml-2 mr-2 rounded-full border-2 border-black object-cover"
+              alt="Author"
+            />
+            <span className="font-bold">{blog.author || "Unknown"}</span>
+          </div>
 
           <div>
             <p className="text-xs">at {blog.date}</p>
@@ -83,7 +81,7 @@ const BlogDetail: React.FC = () => {
         <img
           src={blog.image || img}
           alt={blog.title}
-          className="w-full h-[600px] rounded-lg"
+          className="w-full  rounded-lg"
         />
         <div className="text-gray-700 mt-4 space-y-4 p-9">
           {blog.content.split("\n").map((paragraph: string, index: number) => (
@@ -134,7 +132,7 @@ const BlogDetail: React.FC = () => {
           </a>
         </div>
       </div>
-     <FeaturedBlog/>
+      <FeaturedBlog />
     </>
   );
 };

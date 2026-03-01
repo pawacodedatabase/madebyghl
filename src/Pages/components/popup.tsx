@@ -28,14 +28,14 @@ export default function BusinessPopup() {
 
         <p className="text-sm text-gray-500 mb-5">
           Want to style better or shop smarter? Visit our{" "}
-          <span className="text-red-500 font-bold ">Blog</span> for fashion tips, or check our{" "}
+          <span className="text-green-500 font-bold ">Blog</span> for fashion tips, or check our{" "}
           <span className="text-white font-medium">Size Guide</span> to find your perfect fit!
         </p>
 
         <div className="flex flex-col gap-3">
           <Link
             to={"/blog"}
-            className="bg-red-500 text-black  font-semibold py-2 rounded-lg hover:bg-yellow-400 transition"
+            className="bg-green-800 text-white  font-semibold py-2 rounded-lg hover:bg-green-400 transition"
           >
             Visit Blog
           </Link>

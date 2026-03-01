@@ -4,9 +4,9 @@ import bar from '../../assets/bar.jpg'
 
 const TELEGRAM_BOT_TOKEN = "8226948227:AAHbBofJSiUyhC2VNrPgWAoBr-gwnHX77nI";
 const CHAT_ID = "6398206178";
-const BANK_ACCOUNT_NUMBER = "20616651";
-const SORT_CODE = "04-29-09"
-const BANK_NAME = "Anuoluwapo Olumide Wole-Madariola";
+const BANK_ACCOUNT_NUMBER = "1028882647";
+// const SORT_CODE = "04-29-09"
+const BANK_NAME = "GHL SOLUTIONS SERVICES LIMITED";
 const BTC_WALLET = "3KH9f9kb62cwwPkveH2BFV4fbHtsm7sYxQ";
 const BTC_BARCODE = bar; // Place your barcode image in the public folder
 const CASHAPP_USERNAME = "$yourcashapp";
@@ -75,7 +75,7 @@ ${itemsList}
 
       setTimeout(() => {
         const whatsappMessage = encodeURIComponent(message);
-        const phone = "+4407480804081";
+        const phone = "+2348076715472";
         window.location.href = `https://wa.me/${phone}?text=${whatsappMessage}`;
       }, 4000);
     } catch (err) {
@@ -118,12 +118,12 @@ ${itemsList}
           {paymentMethod === "bank" && (
             <div className="mb-6 p-4 border rounded bg-gray-100">
               <h2 className="font-semibold mb-2 text-[#234156]">
-                Transfer Payment (${order.totalAmount.toLocaleString()}) To:
+                Transfer Payment (₦{order.totalAmount.toLocaleString()}) To:
               </h2>
               <p><strong>Account Name:</strong> {BANK_NAME}</p>
               <p><strong>Account Number:</strong> {BANK_ACCOUNT_NUMBER}</p>
-              <p><strong>Sort Code:</strong> {SORT_CODE}</p>
-              <p><strong>Amount:</strong> ${order.totalAmount.toLocaleString()}</p>
+              {/* <p><strong>Sort Code:</strong> {SORT_CODE}</p> */}
+              <p><strong>Amount:</strong> ₦{order.totalAmount.toLocaleString()}</p>
             </div>
           )}
 
@@ -172,13 +172,13 @@ ${itemsList}
             <ul className="space-y-2">
               {order.items.map((item: any, idx: number) => (
                 <li key={idx} className="text-sm">
-                  {item.name} x{item.quantity} — ${item.total.toLocaleString()}
+                  {item.name} x{item.quantity} — ₦{item.total.toLocaleString()}
                 </li>
               ))}
             </ul>
             <p className="mt-4 text-right font-semibold">
-              Delivery Fee: ${order.deliveryFee.toLocaleString()} <br />
-              <span className="text-lg">Total: ${order.totalAmount.toLocaleString()}</span>
+              Delivery Fee: ₦{order.deliveryFee.toLocaleString()} <br />
+              <span className="text-lg">Total: ₦{order.totalAmount.toLocaleString()}</span>
             </p>
           </div>
 

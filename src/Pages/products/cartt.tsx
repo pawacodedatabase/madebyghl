@@ -25,11 +25,15 @@ const Cart: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("https://api.jsonbin.io/v3/b/6864f0d78960c979a5b5b7ad/latest", {
-          headers: {
-            "X-Master-Key": "$2a$10$yti1izYQ7PKY9IhwxrQiuuIk8TZDdxM6nzYFnduMOvJtKIdyRhBB.",
+        const res = await fetch(
+          "https://api.jsonbin.io/v3/b/69a476e643b1c97be9a9baa8/latest",
+          {
+            headers: {
+              "X-Master-Key":
+                "$2a$10$yti1izYQ7PKY9IhwxrQiuuIk8TZDdxM6nzYFnduMOvJtKIdyRhBB.",
+            },
           },
-        });
+        );
         const data = await res.json();
         console.log(data); // <- check what your data looks like in console
 
@@ -61,7 +65,7 @@ const Cart: React.FC = () => {
     const updatedCart = cart.map((item) =>
       item.productId === productId && item.quantity > 1
         ? { ...item, quantity: item.quantity - 1 }
-        : item
+        : item,
     );
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
@@ -71,7 +75,7 @@ const Cart: React.FC = () => {
     const updatedCart = cart.map((item) =>
       item.productId === productId
         ? { ...item, quantity: item.quantity + 1 }
-        : item
+        : item,
     );
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
@@ -100,8 +104,9 @@ const Cart: React.FC = () => {
   return (
     <div className="bg-white min-h-screen text-gray-800 p-6">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6 text-center text-gray-900">Your Cart</h1>
-
+        <h1 className="text-3xl font-bold mb-6 text-center text-gray-900">
+          Your Cart
+        </h1>
         <div>
           <p className="text-center">
             If your item is not here kindly{" "}
@@ -110,14 +115,15 @@ const Cart: React.FC = () => {
             </span>
           </p>
         </div>
-
         <br /> <br />
-
         {cart.length === 0 ? (
           <div>
             <p className="text-center text-2xl text-gray-600 mb-5">
               Your cart is empty.{" "}
-              <Link to="/shop" className="border-2 border-[#1a2d42] px-3 text-sm py-1 bg-[#1a2d42] text-white hover:bg-transparent hover:text-black rounded-md">
+              <Link
+                to="/shop"
+                className="border-2 border-[#1a2d42] px-3 text-sm py-1 bg-[#1a2d42] text-white hover:bg-transparent hover:text-black rounded-md"
+              >
                 Start shopping!
               </Link>
             </p>
@@ -137,9 +143,14 @@ const Cart: React.FC = () => {
                 </thead>
                 <tbody>
                   {cart.map((item) => {
-                    const product = products.find((p) => p.id === item.productId);
+                    const product = products.find(
+                      (p) => p.id === item.productId,
+                    );
                     return product ? (
-                      <tr key={item.productId} className="border-b border-gray-200 hover:bg-gray-100 transition">
+                      <tr
+                        key={item.productId}
+                        className="border-b border-gray-200 hover:bg-gray-100 transition"
+                      >
                         <td className="py-4 px-6 flex items-center">
                           <img
                             src={product.images[0]}
@@ -151,7 +162,9 @@ const Cart: React.FC = () => {
                         <td className="py-4 px-6 text-center">
                           <div className="flex items-center justify-center space-x-2">
                             <button
-                              onClick={() => handleDecreaseQuantity(item.productId)}
+                              onClick={() =>
+                                handleDecreaseQuantity(item.productId)
+                              }
                               className="px-3 py-1 bg-gray-300 text-gray-800 rounded hover:bg-gray-600 hover:text-white transition"
                             >
                               -
@@ -160,16 +173,20 @@ const Cart: React.FC = () => {
                               {item.quantity}
                             </span>
                             <button
-                              onClick={() => handleIncreaseQuantity(item.productId)}
+                              onClick={() =>
+                                handleIncreaseQuantity(item.productId)
+                              }
                               className="px-3 py-1 bg-gray-300 text-gray-800 rounded hover:bg-gray-600 hover:text-white transition"
                             >
                               +
                             </button>
                           </div>
                         </td>
-                        <td className="py-4 px-6 text-center">${product.price.toFixed(2)}</td>
                         <td className="py-4 px-6 text-center">
-                          ${(item.quantity * product.price).toFixed(2)}
+                          ₦{product.price.toFixed(2)}
+                        </td>
+                        <td className="py-4 px-6 text-center">
+                          ₦{(item.quantity * product.price).toFixed(2)}
                         </td>
                         <td className="py-4 px-6 text-center">
                           <button
@@ -188,7 +205,6 @@ const Cart: React.FC = () => {
             </div>
           </div>
         )}
-
         {cart.length > 0 && (
           <div className="mt-6">
             <div className="bg-white p-6 rounded-lg shadow-md border">
@@ -213,19 +229,19 @@ const Cart: React.FC = () => {
 
               <div className="flex justify-between items-center text-lg text-gray-600">
                 <span>Subtotal:</span>
-                <span>${totalPrice.toFixed(2)}</span>
+                <span>₦{totalPrice.toFixed(2)}</span>
               </div>
 
               {discountApplied && (
                 <div className="flex justify-between items-center text-lg text-green-500">
                   <span>Discount (5%):</span>
-                  <span>-${(totalPrice * 0.05).toFixed(2)}</span>
+                  <span>-₦{(totalPrice * 0.05).toFixed(2)}</span>
                 </div>
               )}
 
               <div className="flex justify-between items-center text-xl font-semibold text-gray-700 mt-4">
                 <span>Total:</span>
-                <span>${finalTotal.toFixed(2)}</span>
+                <span>₦{finalTotal.toFixed(2)}</span>
               </div>
             </div>
 

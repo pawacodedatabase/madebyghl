@@ -7,10 +7,10 @@ interface CartItem {
 }
 
 const deliveryFees = [
-  { state: "Nigeria", fee: 20 },
-  { state: "United State", fee: 25 },
-  { state: "United Kingdom", fee: 30 },
-  { state: "Other European Countries", fee: 30 },
+  { state: "Lagos", fee: 2500 },
+  // { state: "United State", fee: 25 },
+  // { state: "United Kingdom", fee: 30 },
+  // { state: "Other European Countries", fee: 30 },
 ];
 
 const API_KEY = "$2a$10$yti1izYQ7PKY9IhwxrQiuuIk8TZDdxM6nzYFnduMOvJtKIdyRhBB.";
@@ -18,7 +18,8 @@ const API_KEY = "$2a$10$yti1izYQ7PKY9IhwxrQiuuIk8TZDdxM6nzYFnduMOvJtKIdyRhBB.";
 const Checkout: React.FC = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [products, setProducts] = useState<any[]>([]);
-  const [selectedDeliveryState, setSelectedDeliveryState] = useState<string>("");
+  const [selectedDeliveryState, setSelectedDeliveryState] =
+    useState<string>("");
   const [deliveryFee, setDeliveryFee] = useState<number>(0);
   const [billingInfo, setBillingInfo] = useState({
     name: "",
@@ -38,12 +39,12 @@ const Checkout: React.FC = () => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          "https://api.jsonbin.io/v3/b/6864f0d78960c979a5b5b7ad/latest",
+          "https://api.jsonbin.io/v3/b/69a476e643b1c97be9a9baa8/latest",
           {
             headers: {
               "X-Master-Key": API_KEY,
             },
-          }
+          },
         );
         const data = await response.json();
         setProducts(data.record.products || data.record);
@@ -60,20 +61,29 @@ const Checkout: React.FC = () => {
     return product ? total + item.quantity * product.price : total;
   }, 0);
 
-  const handleDeliveryStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleDeliveryStateChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
     const state = event.target.value;
     setSelectedDeliveryState(state);
     const selectedFee = deliveryFees.find((fee) => fee.state === state);
     setDeliveryFee(selectedFee ? selectedFee.fee : 0);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setBillingInfo((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleManualPayment = () => {
-    if (!billingInfo.email || !billingInfo.name || !billingInfo.phone || !billingInfo.address) {
+    if (
+      !billingInfo.email ||
+      !billingInfo.name ||
+      !billingInfo.phone ||
+      !billingInfo.address
+    ) {
       alert("Please fill in all billing fields.");
       return;
     }
@@ -123,7 +133,9 @@ const Checkout: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Order Summary */}
         <div className="border p-4 rounded-lg shadow-sm bg-gray-50">
-          <h2 className="text-lg font-semibold mb-4 text-[#234156]">Order Summary</h2>
+          <h2 className="text-lg font-semibold mb-4 text-[#234156]">
+            Order Summary
+          </h2>
           <table className="w-full border">
             <thead>
               <tr>
@@ -140,7 +152,7 @@ const Checkout: React.FC = () => {
                     <td className="p-2 border">{product.name}</td>
                     <td className="p-2 border">{item.quantity}</td>
                     <td className="p-2 border">
-                      ${(item.quantity * product.price).toLocaleString()}
+                      ₦{(item.quantity * product.price).toLocaleString()}
                     </td>
                   </tr>
                 ) : null;
@@ -149,7 +161,10 @@ const Checkout: React.FC = () => {
           </table>
 
           <div className="mt-4">
-            <label htmlFor="deliveryState" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="deliveryState"
+              className="block text-sm font-medium text-gray-700"
+            >
               Delivery Region
             </label>
             <select
@@ -161,23 +176,27 @@ const Checkout: React.FC = () => {
               <option value="">Select</option>
               {deliveryFees.map((state) => (
                 <option key={state.state} value={state.state}>
-                  {state.state} – ${state.fee.toLocaleString()}
+                  {state.state} – ₦{state.fee.toLocaleString()}
                 </option>
               ))}
             </select>
           </div>
 
           <div className="mt-4 text-right">
-            <h3 className="text-lg font-semibold">Delivery: ${deliveryFee.toLocaleString()}</h3>
+            <h3 className="text-lg font-semibold">
+              Delivery: ₦{deliveryFee.toLocaleString()}
+            </h3>
             <h3 className="text-xl font-bold text-[#1a2d42]">
-              Total: ${(totalPrice + deliveryFee).toLocaleString()}
+              Total: ₦{(totalPrice + deliveryFee).toLocaleString()}
             </h3>
           </div>
         </div>
 
         {/* Billing Info */}
         <div className="border p-4 rounded-lg shadow-sm bg-gray-50">
-          <h2 className="text-lg font-semibold mb-4 text-[#234156]">Shipping Details</h2>
+          <h2 className="text-lg font-semibold mb-4 text-[#234156]">
+            Shipping Details
+          </h2>
           <div className="space-y-4">
             <input
               type="text"

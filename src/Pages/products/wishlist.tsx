@@ -1,6 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { FaTrash, FaShoppingCart, FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import {
+  FaTrash,
+  FaShoppingCart,
+  FaFacebookF,
+  FaInstagram,
+  FaTwitter,
+} from "react-icons/fa";
 
 interface Product {
   id: number;
@@ -21,11 +27,15 @@ const Wishlist: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("https://api.jsonbin.io/v3/b/6864f0d78960c979a5b5b7ad/latest", {
-          headers: {
-            "X-Master-Key": "$2a$10$yti1izYQ7PKY9IhwxrQiuuIk8TZDdxM6nzYFnduMOvJtKIdyRhBB.",
+        const res = await fetch(
+          "https://api.jsonbin.io/v3/b/69a476e643b1c97be9a9baa8/latest",
+          {
+            headers: {
+              "X-Master-Key":
+                "$2a$10$yti1izYQ7PKY9IhwxrQiuuIk8TZDdxM6nzYFnduMOvJtKIdyRhBB.",
+            },
           },
-        });
+        );
         const data = await res.json();
         console.log(data); // check what you get
         if (data.record.products) {
@@ -40,30 +50,34 @@ const Wishlist: React.FC = () => {
 
     fetchProducts();
 
-    const storedWishlist = localStorage.getItem('wishlist');
+    const storedWishlist = localStorage.getItem("wishlist");
     if (storedWishlist) {
       setWishlist(JSON.parse(storedWishlist));
     }
   }, []);
 
   const handleRemoveFromWishlist = (productId: number) => {
-    const updatedWishlist = wishlist.filter(item => item.productId !== productId);
+    const updatedWishlist = wishlist.filter(
+      (item) => item.productId !== productId,
+    );
     setWishlist(updatedWishlist);
-    localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
   };
 
   const handleAddToCart = (productId: number) => {
-    const storedCart = localStorage.getItem('cart');
+    const storedCart = localStorage.getItem("cart");
     let cart = storedCart ? JSON.parse(storedCart) : [];
 
-    const existingItem = cart.find((item: { productId: number }) => item.productId === productId);
+    const existingItem = cart.find(
+      (item: { productId: number }) => item.productId === productId,
+    );
     if (existingItem) {
       existingItem.quantity += 1;
     } else {
       cart.push({ productId, quantity: 1 });
     }
 
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
     alert("Product added to cart!");
   };
 
@@ -72,8 +86,12 @@ const Wishlist: React.FC = () => {
       {/* Header Section */}
       <header className="bg-white py-8 shadow-md">
         <div className="container mx-auto text-center">
-          <h1 className="text-4xl font-extrabold text-gray-800">Your Wishlist</h1>
-          <p className="text-lg text-gray-600 mt-2">Explore your favorite products, curated by you.</p>
+          <h1 className="text-4xl font-extrabold text-gray-800">
+            Your Wishlist
+          </h1>
+          <p className="text-lg text-gray-600 mt-2">
+            Explore your favorite products, curated by you.
+          </p>
         </div>
       </header>
 
@@ -81,7 +99,9 @@ const Wishlist: React.FC = () => {
         {/* Wishlist Items */}
         {wishlist.length === 0 ? (
           <div className="flex flex-col items-center justify-center mt-16">
-            <p className="text-lg text-gray-600">Your wishlist is currently empty.</p>
+            <p className="text-lg text-gray-600">
+              Your wishlist is currently empty.
+            </p>
             <Link
               to="/shop"
               className="mt-4 bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300"
@@ -91,8 +111,10 @@ const Wishlist: React.FC = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {wishlist.map(item => {
-              const product = products.find(product => product.id === item.productId);
+            {wishlist.map((item) => {
+              const product = products.find(
+                (product) => product.id === item.productId,
+              );
               return product ? (
                 <div
                   key={item.productId}
@@ -104,8 +126,12 @@ const Wishlist: React.FC = () => {
                     className="w-full h-60 object-cover rounded-t-lg"
                   />
                   <div className="p-4">
-                    <h2 className="text-lg font-semibold text-gray-800 truncate">{product.name}</h2>
-                    <p className="text-gray-600 mt-2">${product.price.toFixed(2)}</p>
+                    <h2 className="text-lg font-semibold text-gray-800 truncate">
+                      {product.name}
+                    </h2>
+                    <p className="text-gray-600 mt-2">
+                      ${product.price.toFixed(2)}
+                    </p>
                     <div className="flex items-center justify-between mt-4">
                       {/* Add to Cart */}
                       <button
@@ -135,13 +161,25 @@ const Wishlist: React.FC = () => {
         <div className="container mx-auto text-center">
           {/* Social Media Icons */}
           <div className="flex justify-center gap-8 mt-8">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaFacebookF className="text-blue-600 text-4xl hover:scale-110 transition-transform" />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaInstagram className="text-pink-500 text-4xl hover:scale-110 transition-transform" />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaTwitter className="text-blue-400 text-4xl hover:scale-110 transition-transform" />
             </a>
           </div>

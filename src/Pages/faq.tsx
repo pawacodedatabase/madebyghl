@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import ReviewComponent from './components/review';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import ReviewComponent from "./components/review";
 
 const faqs = [
   {
-    question: "What makes Rocspace different from other clothing brands?",
+    question: "What makes GHL different from other clothing brands?",
     answer:
-      "Rocspace is where bold design meets everyday wear. We fuse streetwear attitude with premium quality to help you stand out and feel unstoppable.",
+      "GHL is where bold design meets everyday wear. We fuse streetwear attitude with premium quality to help you stand out and feel unstoppable.",
   },
   {
-    question: "Are Rocspace pieces durable?",
+    question: "Are GHL pieces durable?",
     answer:
       "Absolutely. Each shirt and hoodie is made with premium fabrics and reinforced stitching, ensuring long-lasting wear and top-tier comfort.",
   },
@@ -24,9 +24,9 @@ const faqs = [
       "You have 30 days to return unused items in original condition and packaging. If something’s not right, we’ve got you covered.",
   },
   {
-    question: "Why trust Rocspace?",
+    question: "Why trust GHL?",
     answer:
-      "Thousands of customers trust Rocspace for our focus on quality, originality, and street-level authenticity. We're not just clothing — we're culture.",
+      "Thousands of customers trust GHL for our focus on quality, originality, and street-level authenticity. We're not just clothing — we're culture.",
   },
   {
     question: "Can I customize my order?",
@@ -41,7 +41,7 @@ const faqs = [
   {
     question: "Can I order in bulk for a team or crew?",
     answer:
-      "Yes. Rocspace supports bulk and group orders. Contact us directly and we’ll hook you up with tailored pricing and info.",
+      "Yes. GHL supports bulk and group orders. Contact us directly and we’ll hook you up with tailored pricing and info.",
   },
 ];
 
@@ -58,10 +58,11 @@ const FAQAccordion: React.FC = () => {
         {/* Heading */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-800 font-luxe">
-            Why Rock With Rocspace?
+            Why Rock With GHL?
           </h1>
           <p className="mt-4 text-gray-600">
-            Discover how Rocspace delivers streetwear with attitude, quality, and confidence in every stitch.
+            Discover how GHL delivers streetwear with attitude, quality, and
+            confidence in every stitch.
           </p>
         </div>
 

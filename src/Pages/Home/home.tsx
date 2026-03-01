@@ -2,7 +2,7 @@
 // import CollectionComponent from "../components/CollectionComponent";
 // import DualImageComponent from "../components/dualimage";
 import FeaturedBlog from "../components/Blog/featuredBlog";
-import CategorySelector from "../components/categoryselector";
+// import CategorySelector from "../components/categoryselector";
 import OccasionEdit from "../components/occasionedit";
 
 import FeaturedProduct from "../products/FeaturedProd";
@@ -16,7 +16,7 @@ const Home: React.FC = () => {
   return (
     <>
     <Carousel/> 
-     <CategorySelector/>
+     {/* <CategorySelector/> */}
     <FeaturedProduct/>
     <OccasionEdit/>
     <FeaturedBlog/>

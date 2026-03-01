@@ -1,18 +1,13 @@
-
-
-
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Product } from "../products/product";
 import { Link, useNavigate } from "react-router-dom";
 
-import bag from '../../assets/clt.webp'
-import bag2 from '../../assets/rose.jpg';
+import bag from "../../assets/clt.webp";
+import bag2 from "../../assets/rose.jpg";
 
-const BIN_ID = "6864f0d78960c979a5b5b7ad";
+const BIN_ID = "69a476e643b1c97be9a9baa8";
 const API_KEY = "$2a$10$yti1izYQ7PKY9IhwxrQiuuIk8TZDdxM6nzYFnduMOvJtKIdyRhBB.";
-
 
 const headers = {
   "X-Master-Key": API_KEY,
@@ -20,19 +15,17 @@ const headers = {
 };
 
 const categories = [
-    {
-      label: "Clothes",
-      value: "Clothes",
-      image: bag,
-    },
-    {
-      label: "SHOES",
-      value: "Shoe",
-      image: bag2,
-    },
-   
-  ];
-  
+  {
+    label: "Clothes",
+    value: "Clothes",
+    image: bag,
+  },
+  {
+    label: "SHOES",
+    value: "Shoe",
+    image: bag2,
+  },
+];
 
 export default function CategorySelector() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -40,7 +33,10 @@ export default function CategorySelector() {
   const navigate = useNavigate();
 
   const fetchProducts = async () => {
-    const res = await axios.get(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, { headers });
+    const res = await axios.get(
+      `https://api.jsonbin.io/v3/b/${BIN_ID}/latest`,
+      { headers },
+    );
     setProducts(res.data.record);
   };
 
@@ -52,7 +48,6 @@ export default function CategorySelector() {
     }
   };
 
-
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -63,7 +58,10 @@ export default function CategorySelector() {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6 text-center  font-graffiti"> <span className="text-red-500">Browse</span> Category</h1>
+      <h1 className="text-2xl font-bold mb-6 text-center  font-graffiti">
+        {" "}
+        <span className="text-red-500">Browse</span> Category
+      </h1>
 
       {/* Category Cards in a Row */}
       <div className="flex gap-4 mb-8 justify-center">
@@ -87,8 +85,6 @@ export default function CategorySelector() {
         ))}
       </div>
 
-
-
       {selectedCategory && (
         <>
           <h2 className="text-sm font-semibold mb-4 text-center">
@@ -97,22 +93,28 @@ export default function CategorySelector() {
 
           {/* Compact Product Cards */}
           <div className="flex flex-wrap justify-center gap-4">
-  {filteredProducts.map((product) => (
-    <div key={product.id} className="w-48 bg-black shadow p-3 rounded text-sm">
-      <Link to={`/product/${product.id}`}>
-        <img
-          src={product.images[0]}
-          alt={product.name}
-          className="w-full h-32 object-cover rounded mb-2"
-        />
-        <h3 className="font-semibold text-sm text-[#ccc]">{product.name}</h3>
-        <p className="text-gray-300 text-xs">{product.category}</p>
-        <p className="font-bold text-red-500 text-sm">${product.price}</p>
-      </Link>
-    </div>
-  ))}
-</div>
-
+            {filteredProducts.map((product) => (
+              <div
+                key={product.id}
+                className="w-48 bg-black shadow p-3 rounded text-sm"
+              >
+                <Link to={`/product/${product.id}`}>
+                  <img
+                    src={product.images[0]}
+                    alt={product.name}
+                    className="w-full h-32 object-cover rounded mb-2"
+                  />
+                  <h3 className="font-semibold text-sm text-[#ccc]">
+                    {product.name}
+                  </h3>
+                  <p className="text-gray-300 text-xs">{product.category}</p>
+                  <p className="font-bold text-red-500 text-sm">
+                    ${product.price}
+                  </p>
+                </Link>
+              </div>
+            ))}
+          </div>
 
           {/* Button to Shop Page */}
           <div className="mt-6 text-center">
