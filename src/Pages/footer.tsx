@@ -67,7 +67,7 @@ const Footer = () => {
           <p className="text-sm mb-4">+2348076715472</p>
           <div className="flex gap-4 text-lg">
             <a
-              href="https://instagram.com/madebyghl"
+              href="https://instagram.com/Made By GHL"
               target="_blank"
               rel="noopener noreferrer"
             >
