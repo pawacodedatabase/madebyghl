@@ -98,7 +98,7 @@ const FeaturedProduct: React.FC = () => {
               <div className="flex px-4 justify-between mb-4 mt-4">
                 {/* Product Name */}
                 <p className="text-center text-black text-xs tracking-wide">
-                  {product.name.toUpperCase()}
+                  {product.name}
                 </p>
 
                 {/* Price */}
