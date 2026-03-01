@@ -404,7 +404,7 @@ const ProductDetail: React.FC = () => {
       MadeByGHL is more than a clothing brand — it’s a statement of gratitude,
       creativity, and confidence. Every piece is designed with purpose,
       combining premium quality with modern streetwear style. 
-      Our philosophy is simple: <strong>Grateful in Every Thread</strong>.
+      Our philosophy is simple: <strong>Gratitude in Every Thread</strong>.
       We create fashion that inspires self-expression while delivering comfort,
       authenticity, and timeless style.
     </p>

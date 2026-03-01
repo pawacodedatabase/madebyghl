@@ -6,7 +6,7 @@ const MovingText: React.FC = () => {
      <div className="absolute top-0 left-0 overflow-hidden w-full">
   <div className="whitespace-nowrap animate-marquee text-sm font-bold font-graffiti">
     <span className='text-sm'>
-      <span className="text-green-500">MadeByGHL</span> — Grateful in Every Thread ✨ |
+      <span className="text-green-500">MadeByGHL</span> — Gratitude in Every Thread ✨ |
       Premium fashion crafted with gratitude • Shop the latest collection now!
     </span>
   </div>
