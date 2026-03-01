@@ -57,7 +57,7 @@ const Carousel: React.FC = () => {
         <div
           key={slide.id}
           className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentIndex ? "opacity-100 z-10" : "opacity-0"
+            index === currentIndex ? "opacity-150 z-10" : "opacity-0"
           }`}
           style={{
             backgroundImage: `url(${slide.image})`,
