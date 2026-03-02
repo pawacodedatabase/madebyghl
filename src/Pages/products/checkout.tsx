@@ -26,6 +26,7 @@ const Checkout: React.FC = () => {
     email: "",
     address: "",
     phone: "",
+    size: '',
   });
 
   const navigate = useNavigate();
@@ -82,16 +83,17 @@ const Checkout: React.FC = () => {
       !billingInfo.email ||
       !billingInfo.name ||
       !billingInfo.phone ||
+      !billingInfo.size ||
       !billingInfo.address
     ) {
       alert("Please fill in all billing fields.");
       return;
     }
 
-    if (!selectedDeliveryState) {
-      alert("Please select a delivery region");
-      return;
-    }
+    // if (!selectedDeliveryState) {
+    //   alert("Please select a delivery region");
+    //   return;
+    // }
 
     if (cart.length === 0) {
       alert("Your cart is empty");
@@ -176,7 +178,7 @@ const Checkout: React.FC = () => {
               <option value="">Select</option>
               {deliveryFees.map((state) => (
                 <option key={state.state} value={state.state}>
-                  {state.state} – ₦{state.fee.toLocaleString()}
+                  {/* {state.state} – ₦{state.fee.toLocaleString()} */}
                 </option>
               ))}
             </select>
@@ -219,6 +221,14 @@ const Checkout: React.FC = () => {
               name="phone"
               placeholder="Phone"
               value={billingInfo.phone}
+              onChange={handleInputChange}
+              className="w-full p-2 border rounded"
+            />
+            <input
+              type="text"
+              name="size"
+              placeholder="Your Size"
+              value={billingInfo.size}
               onChange={handleInputChange}
               className="w-full p-2 border rounded"
             />

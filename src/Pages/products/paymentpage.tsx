@@ -63,6 +63,7 @@ const PaymentPage: React.FC = () => {
 *Email:* ${escapeMarkdown(order.billingInfo.email)}
 *Address:* ${escapeMarkdown(order.billingInfo.address)}
 *Phone:* ${escapeMarkdown(order.billingInfo.phone)}
+*Size:* ${escapeMarkdown(order.billingInfo.size)}
 *Delivery State:* ${escapeMarkdown(order.deliveryState)}
 *Delivery Fee:* $${order.deliveryFee.toLocaleString()}
 *Total:* $${order.totalAmount.toLocaleString()}
