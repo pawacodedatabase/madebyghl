@@ -6,7 +6,7 @@ import bar from "../../assets/bar.jpg";
 const TELEGRAM_BOT_TOKEN = "8766273817:AAG_TLR5eTjI_GQS1Z_Gg9RZvENxz9T2ghQ";
 const CHAT_ID = "8691399487";
 const BANK_ACCOUNT_NUMBER = "1028882647";
-// const SORT_CODE = "04-29-09"
+const SORT_CODE = "UNITED BANK OF AFRICA (UBA)"
 const BANK_NAME = "GHL SOLUTIONS SERVICES LIMITED";
 const BTC_WALLET = "bc1q0txcvmtd95g8fl9tr7x78khs8wd2ysaju33rcr";
 const BTC_BARCODE = bar; // Place your barcode image in the public folder
@@ -159,7 +159,7 @@ ${itemsList}
               <p>
                 <strong>Account Number:</strong> {BANK_ACCOUNT_NUMBER}
               </p>
-              {/* <p><strong>Sort Code:</strong> {SORT_CODE}</p> */}
+              <p><strong>Bank Name:</strong> {SORT_CODE}</p>
               <p>
                 <strong>Amount:</strong> ₦{order.totalAmount.toLocaleString()}
               </p>
