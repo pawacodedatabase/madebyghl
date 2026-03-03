@@ -285,7 +285,7 @@ const ProductDetail: React.FC = () => {
                             <p className="p-2 bg-gray-300 inline-block rounded text-sm mr-2">
                               {color}
                             </p>
-                            {index < product.colors.length - 1 ? ", " : ""}
+                            {index < product.colors.length - 1 ? " " : ""}
                           </span>
                         ))}
                       </div>
