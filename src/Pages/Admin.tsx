@@ -17,7 +17,7 @@ export default function AdminPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [sizesInput, setSizesInput] = useState("");
-  
+  const [colorsInput, setColorsInput] = useState("");
   const [form, setForm] = useState<Omit<Product, "id">>({
     name: "",
     category: "",
