@@ -71,12 +71,16 @@ const Checkout: React.FC = () => {
     setDeliveryFee(selectedFee ? selectedFee.fee : 0);
   };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setBillingInfo((prev) => ({ ...prev, [name]: value }));
-  };
+  const handleInputChange: React.ChangeEventHandler<
+  HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+> = (e) => {
+  const { name, value } = e.target;
+
+  setBillingInfo((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+};
 
   const handleManualPayment = () => {
     if (
@@ -224,14 +228,26 @@ const Checkout: React.FC = () => {
               onChange={handleInputChange}
               className="w-full p-2 border rounded"
             />
-            <input
-              type="text"
-              name="size"
-              placeholder="Your Size"
-              value={billingInfo.size}
-              onChange={handleInputChange}
-              className="w-full p-2 border rounded"
-            />
+           <div className="space-y-2">
+  <label className="font-medium">Select Size</label>
+
+  <select
+    name="size"
+    value={billingInfo.size}
+    onChange={handleInputChange}
+    className="w-full p-2 border rounded"
+    required
+  >
+    <option value="">-- Select Size --</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="Other">Other</option>
+  </select>
+
+ 
+</div>
             <textarea
               name="address"
               placeholder="Shipping Address"
