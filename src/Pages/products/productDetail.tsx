@@ -261,7 +261,7 @@ const ProductDetail: React.FC = () => {
                     {product.sizes && product.sizes.length > 0 && (
                       <div className="mt-5">
                         <p>
-                          Available Size(s){product.sizes.length === 1 ? "" : "s"}:
+                          Available Size{product.sizes.length === 1 ? "" : "s"}:
                         </p>
                         {product.sizes.map((size: string, index: number) => (
                           <span key={index}>
@@ -277,7 +277,7 @@ const ProductDetail: React.FC = () => {
                     {product.colors && product.colors.length > 0 && (
                       <div className="mt-5">
                         <p>
-                          Available Color(s)
+                          Available Color
                           {product.colors.length === 1 ? "" : "s"}:
                         </p>
                         {product.colors.map((color: string, index: number) => (
