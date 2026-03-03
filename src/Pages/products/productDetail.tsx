@@ -268,7 +268,7 @@ const ProductDetail: React.FC = () => {
                             <p className="p-2 bg-gray-300 inline-block rounded text-sm mr-2">
                               {size}
                             </p>
-                            {index < product.sizes.length - 1 ? ", " : ""}
+                            {index < product.sizes.length - 1 ? " " : ""}
                           </span>
                         ))}
                       </div>

@@ -16,6 +16,8 @@ const headers = {
 export default function AdminPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [editingId, setEditingId] = useState<number | null>(null);
+  const [sizesInput, setSizesInput] = useState("");
+  
   const [form, setForm] = useState<Omit<Product, "id">>({
     name: "",
     category: "",
@@ -89,10 +91,10 @@ export default function AdminPage() {
       colors: [],
     });
   };
-  // const handleArrayInput = (value: string) => {
-  //   console.log("Input Value:", value); // Check the input value
-  //   return value.split(",").map((v) => v.trim()).filter((v) => v);
-  // };
+  const handleArrayInput = (value: string) => {
+    console.log("Input Value:", value); // Check the input value
+    return value.split(",").map((v) => v.trim()).filter((v) => v);
+  };
 
   const removeImage = (index: number) => {
     const updatedImages = [...form.images];
@@ -203,21 +205,34 @@ export default function AdminPage() {
             />
             <span>Is On Sale?</span>
           </label>
-          {/* <input
-          type="text"
-          placeholder="Sizes (comma separated)"
-          value={form.sizes?.join(", ") || ""}
-          onChange={(e) => setForm({ ...form, sizes: handleArrayInput(e.target.value) })}
-          className="border p-2 w-full rounded"
-        /> */}
-          {/* <input
-          type="text"
-          placeholder="Colors (comma separated)"
-          value={form.colors?.join(", ") || ""}
-          onChange={(e) => setForm({ ...form, colors: handleArrayInput(e.target.value) })}
-          className="border p-2 w-full rounded"
-        /> */}
-          {/* IMAGES LIST */}
+         <input
+  type="text"
+  placeholder="Sizes (comma separated)"
+  value={sizesInput}
+  onChange={(e) => {
+    const value = e.target.value;
+    setSizesInput(value);
+    setForm({
+      ...form,
+      sizes: handleArrayInput(value),
+    });
+  }}
+  className="border p-2 w-full rounded"
+/>
+<input
+  type="text"
+  placeholder="Colors (comma separated)"
+  value={colorsInput}
+  onChange={(e) => {
+    const value = e.target.value;
+    setColorsInput(value);
+    setForm({
+      ...form,
+      colors: handleArrayInput(value),
+    });
+  }}
+  className="border p-2 w-full rounded"
+/>        {/* IMAGES LIST */}
           <div>
             <p className="font-semibold mb-2">Images</p>
             <div className="flex flex-wrap gap-4 mb-2">
